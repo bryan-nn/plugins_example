@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.utils.translation import ugettext_lazy as _
+print '[+] _: %s' % _
 
 from pipeline.conf import settings
 from pipeline.core.flow.activity import Service, StaticIntervalGenerator
