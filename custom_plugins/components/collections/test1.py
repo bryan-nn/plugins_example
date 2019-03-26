@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from django.utils.translation import ugettext_lazy as _
-print '[+] _: %s' % _
 
 from pipeline.conf import settings
 from pipeline.core.flow.activity import Service, StaticIntervalGenerator
 from pipeline.component_framework.component import Component
+
+from custom_plugins.components.collections.utils_1 import utils_1_print
+from custom_plugins.components.utils_2 import utils_2_print
 
 __group_name__ = _(u"自定义原子(CUS)")
 
