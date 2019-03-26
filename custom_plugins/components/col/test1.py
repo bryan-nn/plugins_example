@@ -31,7 +31,7 @@ class Pause1Service(Service):
 
 
 class Pause1Component(Component):
-    name = _(u'测试1')
+    name = u'测试1'
     code = 'pause1_node'
     bound_service = Pause1Service
     form = settings.STATIC_URL + 'custom_plugins/test/test_pause1.js'
