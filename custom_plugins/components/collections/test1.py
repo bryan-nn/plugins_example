@@ -35,5 +35,4 @@ class Pause1Component(Component):
     code = 'pause1_node'
     bound_service = Pause1Service
     form = settings.STATIC_URL + 'custom_plugins/test/test_pause1.js'
-    color = 'red'
-    
+    color = 'green'
