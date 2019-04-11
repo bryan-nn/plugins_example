@@ -9,7 +9,7 @@ from pipeline.component_framework.component import Component
 from custom_plugins.components.collections.utils_1 import utils_1_print
 from custom_plugins.components.utils_2 import utils_2_print
 
-__group_name__ = _(u"自定义原子(CUS)")
+__group_name__ = _(u"远程自定义原子1(CUS1)")
 
 
 class Pause1Service(Service):
@@ -33,8 +33,7 @@ class Pause1Service(Service):
 
 
 class Pause1Component(Component):
-    name = _(u'测试1')
+    name = _(u'远程测试1')
     code = 'pause1_node'
     bound_service = Pause1Service
-    form = settings.STATIC_URL + 'custom_plugins/test/test_pause1.js'
-    color = 'green'
+    form = settings.STATIC_URL + 'components/atoms/bk/pause.js'
