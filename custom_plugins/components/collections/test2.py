@@ -31,4 +31,4 @@ class Pause2Component(Component):
     name = _(u'远程测试2')
     code = 'pause2_node'
     bound_service = Pause2Service
-    form = settings.STATIC_URL + 'components/atoms/bk/pause.js'
+    form = settings.STATIC_URL + 'components/atoms/bk/remote_node_1.js'
