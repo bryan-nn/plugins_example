@@ -7,6 +7,7 @@ from pipeline.core.flow.activity import Service, StaticIntervalGenerator
 from pipeline.component_framework.component import Component
 import datetime,re,json,requests
 import base64,hmac
+from hashlib import sha256
 
 __group_name__ = _(u"轩辕游戏(XY_GAMES)")
 
@@ -76,7 +77,7 @@ class FlushCdnService(Service):
         httpBodyParamsXML = r'''<?xml version="1.0" encoding="utf-8"?>
                                 <purge>
                                     <dirs>
-                                        ''' + dir_str['dir'] + '''
+                                        ''' + dir_str + '''
                                     </dirs>
                                     <dir-action>expire</dir-action>
                                 </purge>
