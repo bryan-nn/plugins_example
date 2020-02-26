@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -92,18 +93,25 @@ class FlushCdnService(Service):
 
 
     def execute(self, data, parent_data):
+        LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+        DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
+        logging.basicConfig(filename='/tmp/mytest.log' , level=logging.DEBUG , format=LOG_FORMAT , datefmt=DATE_FORMAT)
+
         accesskey = data.get_one_of_inputs('accesskey')
         regular_expression = data.get_one_of_inputs('regular_expression')
 
         try:
             openApiDemo = OpenApiDemo()
+            logging.info(accesskey.split(',')[0])
+            logging.info(accesskey.split(',')[1])
+            logging.info(regular_expression)
             result = self.get_domain_name(openApiDemo , accesskey.split(',')[0] , accesskey.split(',')[1] , regular_expression)
             self.flush_purge(openApiDemo ,  accesskey.split(',')[0] , accesskey.split(',')[1] , result['str_res'])
 
             data.set_outputs('data',result)
             return True
-        except :
-            data.set_outputs('data' , {'str_msg': regular_expression })
+        except Exception as e:
+            data.set_outputs('data' , {'str_msg': e })
             return False
 
 
