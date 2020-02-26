@@ -100,19 +100,16 @@ class FlushCdnService(Service):
         accesskey = data.get_one_of_inputs('accesskey')
         regular_expression = data.get_one_of_inputs('regular_expression')
 
-        try:
-            openApiDemo = OpenApiDemo()
-            logging.info(accesskey.split(',')[0])
-            logging.info(accesskey.split(',')[1])
-            logging.info(regular_expression)
-            result = self.get_domain_name(openApiDemo , accesskey.split(',')[0] , accesskey.split(',')[1] , regular_expression)
-            self.flush_purge(openApiDemo ,  accesskey.split(',')[0] , accesskey.split(',')[1] , result['str_res'])
 
-            data.set_outputs('data',result)
-            return True
-        except Exception as e:
-            data.set_outputs('data' , {'str_msg': e })
-            return False
+        openApiDemo = OpenApiDemo()
+        logging.info(accesskey.split(',')[0])
+        logging.info(accesskey.split(',')[1])
+        logging.info(regular_expression)
+        result = self.get_domain_name(openApiDemo , accesskey.split(',')[0] , accesskey.split(',')[1] , regular_expression)
+        self.flush_purge(openApiDemo , accesskey.split(',')[0] , accesskey.split(',')[1] , result['str_res'])
+
+        data.set_outputs('data' , result)
+        return True
 
 
 
