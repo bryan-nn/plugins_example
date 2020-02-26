@@ -47,7 +47,7 @@ class OpenApiDemo:
 class FlushCdnService(Service):
     __need_schedule__ = False
 
-    def get_domain_name(self,openApiDemo , userName , apikey , regular , ext = ''):
+    def get_domain_name(self,openApiDemo , userName , apikey , regular ):
         # 获取指定域名信息
         # 返回指定格式
         # <dir>https://downtm.f8rjk34s.cn/</dir><dir>https://downtm.foshandai.cn/</dir>
@@ -68,8 +68,8 @@ class FlushCdnService(Service):
                 str_msg = str_msg + i['domain-name'] + '\n'
                 str_res = str_res + '<dir>https://' + i['domain-name'] + '/</dir>'
         dict = {'str_msg':str_msg,'str_res':str_res}
-        ex = [userName,apikey,regular,ext]
-        return ex
+
+        return dict
 
     def flush_purge(self,openApiDemo,userName,apikey , dir_str):
         method = 'POST'
@@ -99,7 +99,7 @@ class FlushCdnService(Service):
         try:
             openApiDemo = OpenApiDemo()
             result = self.get_domain_name(openApiDemo , accesskey.split(',')[0] , accesskey.split(',')[1] , regular_expression)
-            #self.flush_purge(openApiDemo ,  accesskey.split(',')[0] , accesskey.split(',')[1] , result['str_res'])
+            self.flush_purge(openApiDemo ,  accesskey.split(',')[0] , accesskey.split(',')[1] , result['str_res'])
 
             data.set_outputs('data',result)
             return True
