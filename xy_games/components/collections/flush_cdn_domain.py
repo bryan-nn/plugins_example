@@ -102,8 +102,8 @@ class FlushCdnService(Service):
 
             data.set_outputs('data',result)
             return True
-        except:
-            data.set_outputs('data' , {'str_msg':'failed!'})
+        except Exception as e:
+            data.set_outputs('data' , {'str_msg': e})
             return False
 
 
