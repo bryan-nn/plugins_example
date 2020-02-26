@@ -103,7 +103,7 @@ class FlushCdnService(Service):
             data.set_outputs('data',result)
             return True
         except Exception as e:
-            data.set_outputs('data' , {'str_msg': e})
+            data.set_outputs('data' , {'str_msg': e  + regular_expression})
             return False
 
 
