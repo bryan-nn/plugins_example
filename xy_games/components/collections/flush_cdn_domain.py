@@ -47,7 +47,7 @@ class OpenApiDemo:
 class FlushCdnService(Service):
     __need_schedule__ = False
 
-    def get_domain_name(openApiDemo , userName , apikey , regular , ext = ''):
+    def get_domain_name(self,openApiDemo , userName , apikey , regular , ext = ''):
         # 获取指定域名信息
         # 返回指定格式
         # <dir>https://downtm.f8rjk34s.cn/</dir><dir>https://downtm.foshandai.cn/</dir>
@@ -71,7 +71,7 @@ class FlushCdnService(Service):
         ex = [userName,apikey,regular,ext]
         return ex
 
-    def flush_purge(openApiDemo,userName,apikey , dir_str):
+    def flush_purge(self,openApiDemo,userName,apikey , dir_str):
         method = 'POST'
         accept = 'application/xml'
         api_url = "https://open.chinanetcenter.com/ccm/purge/ItemIdReceiver"
